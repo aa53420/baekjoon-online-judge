@@ -12,6 +12,6 @@
 import sys
 
 surprisedExpression = "??!"
-existUserId = sys.stdin.readline().replace("\n", "")
+existUserId = sys.stdin.readline().strip()
 print(existUserId + surprisedExpression)
 

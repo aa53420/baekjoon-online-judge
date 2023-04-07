@@ -5,13 +5,8 @@ def is_triple_match(dice1, dice2, dice3):
     return dice1 == dice2 == dice3
 
 
-def find_double_match(dice_list=None):
-    if dice_list is None:
-        dice_list = []
-
-    if len(dice_list) == 0:
-        return -1
-
+def find_double_match(dice1, dice2, dice3):
+    dice_list = [dice1, dice2, dice3]
     for base_index in range(len(dice_list) - 1):
         next_index = base_index + 1
         base_dice = dice_list[base_index]
@@ -23,30 +18,8 @@ def find_double_match(dice_list=None):
     return -1
 
 
-# def find_max_dice(dice_list=None):
-#     if dice_list is None:
-#         dice_list = []
-#
-#     if len(dice_list) == 0:
-#         return 0
-#
-#     max_dice = dice_list[0]
-#
-#     for base_index in range(len(dice_list) - 1):
-#         next_index = base_index + 1
-#         compare_dice = dice_list[next_index]
-#         if max_dice < compare_dice:
-#             max_dice = compare_dice
-#
-#     return max_dice
-
-def find_max_dice(dice_list=None):
-    if dice_list is None:
-        dice_list = []
-
-    if len(dice_list) == 0:
-        return 0
-
+def find_max_dice(dice1, dice2, dice3):
+    dice_list = [dice1, dice2, dice3]
     return max(dice_list)
 
 
@@ -56,7 +29,7 @@ def calc_reward(dice1, dice2, dice3):
     reward = 0
 
     # 같은 눈 2개가 있는지? 있다면 그 값은?
-    double_match_dice = find_double_match([dice1, dice2, dice3])
+    double_match_dice = find_double_match(dice1, dice2, dice3)
 
     # 같은 눈 3개일 때
     if is_triple_match(dice1, dice2, dice3):
@@ -70,7 +43,7 @@ def calc_reward(dice1, dice2, dice3):
     else:
         bonus_reward = 0
         reward = 100
-        base_dice_eye = find_max_dice([dice1, dice2, dice3])
+        base_dice_eye = find_max_dice(dice1, dice2, dice3)
 
     return bonus_reward + (base_dice_eye * reward)
 

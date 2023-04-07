@@ -19,8 +19,7 @@ def find_double_match(dice1, dice2, dice3):
 
 
 def find_max_dice(dice1, dice2, dice3):
-    dice_list = [dice1, dice2, dice3]
-    return max(dice_list)
+    return max([dice1, dice2, dice3])
 
 
 def calc_reward(dice1, dice2, dice3):
@@ -36,10 +35,12 @@ def calc_reward(dice1, dice2, dice3):
         bonus_reward = 10000
         reward = 1000
         base_dice_eye = dice1
+    # 같은 눈이 2개가 있을 때
     elif double_match_dice > 0:
         bonus_reward = 1000
         reward = 100
         base_dice_eye = double_match_dice
+    # 같은 눈이 없을 때
     else:
         bonus_reward = 0
         reward = 100
